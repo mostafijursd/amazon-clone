@@ -10,6 +10,9 @@
              { _id:118,title:"Luggage"},
              { _id:119,title:"Men's Fashion"},
              { _id:120,title:"Sorftwer"},
-             { _id:12,title:"Sports & Outdoors"}
+             { _id:121,title:"Sports & Outdoors"},
+             { _id:122,title:"Prime Video"},
+             { _id:123,title:"Kindle Store"} ,
+             { _id:124,title:"Video Games"}
              
 ]
