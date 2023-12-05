@@ -9,7 +9,7 @@ function App() {
 
   return (
    <div>
-    <h1 className='bg-blue-800 top-0'>Amazon-clone</h1>
+   
     <Header/>
    </div>
   )
