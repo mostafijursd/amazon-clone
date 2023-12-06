@@ -70,8 +70,8 @@ function Banner() {
           ),
       };
   return (
-    <div  className='w-full'>
-    <div className='w-full h-full  relative'>
+    <div  className='w-full '>
+    <div className='w-full h-full relative -z-50  '>
     <Slider {...settings}>
       <div>
        

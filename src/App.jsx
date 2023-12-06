@@ -10,7 +10,7 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-   <div className='font-bodyFont'>
+   <div className='font-bodyFont z-auto'>
    
     <Header/>
     <Banner/>

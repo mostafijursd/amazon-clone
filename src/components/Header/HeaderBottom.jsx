@@ -16,10 +16,10 @@ document.body.addEventListener("click",(e)=>{
 })
     },[ref,setSidebar])
   return (
-    <div  className='w-full px-4 h-[36px] bg-amazonclone_light text-white '>
+    <div  className='w-full px-4 h-[36px] bg-amazonclone_light text-white  '>
 {/*   ListItems start here*/}
-<ul className='flex items-center gap-2 text-sm tracking-wide'>
-    <li  onClick={()=>setSidebar(true)} className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100 gap-2'> < MenuIcon/> All </li>
+<ul className='flex items-center gap-2 text-sm tracking-wide '>
+    <li  onClick={()=>setSidebar(true)} className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100 gap-2 '> < MenuIcon/> All </li>
     <li className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100'> Today's Deals</li>
     <li className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100'> Customer Service</li>
     <li className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100'> Gift Cards</li>
