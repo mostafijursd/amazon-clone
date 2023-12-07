@@ -10,7 +10,7 @@ function Header() {
   const [showAll,setShowAll]=useState(false);
   
   return (
-    <div   className='w-full  '>
+    <div   className='w-full sticky top-0 z-50 '>
       <div  className=' w-full  bg-amazonclone_blue  text-white mx-auto  px-4  py-3  flex  items-center gap-4'>
 {/*       Image start here     */}
 <div className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100'>
