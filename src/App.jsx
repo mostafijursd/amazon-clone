@@ -11,6 +11,7 @@ createRoutesFromElements,
 Outlet,
 Route,
 RouterProvider} from 'react-router-dom'
+import { productsData } from './api/api'
 
 
 
@@ -31,13 +32,13 @@ function App() {
     
 
 <Route path='/' element ={<Layout />}>
-  <Route index  element={<Home/>}></Route>
+  <Route index  element={<Home/>}  loader={productsData}></Route>
 </Route>
     
   ))
 
   return (
-   <div className='font-bodyFont '>
+   <div className='font-bodyFont  '>
    <RouterProvider  router={router}></RouterProvider>
    
    </div>
