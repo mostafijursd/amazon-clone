@@ -27,6 +27,8 @@ export default {
                 amazonclone_blue: "#131921",
                 amazonclone_light: "#232F3E",
                 amazonclone_yellow: "#febd96",
+                amazonclone_green: "#1B4D3E",
+                amazonclone_greenLigth: "#22604D",
                 whiteText: "#ffffff",
                 ligthText: "#ccc",
                 quantity_box: "#F0F2F2",
