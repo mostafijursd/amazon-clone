@@ -3,7 +3,7 @@ import FooterMiddleList from './FooterMiddleList'
 import { middleList } from '../constants'
 function FooterMiddle() {
   return (
-    <div  className='w-full bg-amazonclone_blue text-white'>
+    <div  className='w-full bg-amazonclone_light text-white'>
 {/* Top start here   */}
 
 <div  className='w-full border-b-[1px]  border-gray-500 px-10'>
