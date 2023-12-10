@@ -18,7 +18,9 @@ function Banner() {
               style={{
                position:"absolute",
                top:"70%",
-               left:"45%",
+               left:"0",
+               right:"0",
+               margin:"0 auto",
                transform:"translate(-50% -50%)",
                width:"210px"
               }}
@@ -68,6 +70,7 @@ function Banner() {
               {i + 1}
             </div>
           ),
+
       };
   return (
     <div  className='w-full '>

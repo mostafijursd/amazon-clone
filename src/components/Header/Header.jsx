@@ -18,7 +18,7 @@ function Header() {
 </div>
 {/*       Image End here     */}
 {/*       Deliver start here   */}
-<div className="px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100">
+<div className="px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100 mdl:inline-flex">
 < LocationOnIcon/>
 <p className='text-sm text-ligthText font-light flex flex-col'>Deliver to {""}
 <span className='text-cm font-semibold  -mt-1 text-whiteText'>Kolkata</span> </p>
@@ -26,7 +26,7 @@ function Header() {
 {/*       Deliver end here   */}
 {/*       Search start here   */} 
 
-<div className='h-9 rounded-md flex flex-grow relative border-2'>
+<div className='h-9 rounded-md hidden lgl:flex flex-grow  relative border-2'>
 
   <span  onClick={()=>setShowAll(!showAll)}  className='w-12 h-full  bg-gray-200 hover:bg-gray-200  border-2 cursor-pointer 
   duration-300 text-sm  text-amazonclone_blue  font-titleFont  flex items-center justify-center rounder-tl-md rounded-bl-md'>All <span><ArrowDropDownIcon /></span>
@@ -61,7 +61,7 @@ showAll && (
 
   <input  className=' h-full text-base text-amazonclone_blue flex-grow outline-none border-none px-2' type="text" placeholder='Serach Amazon.in' />
   <span className='w-12 h-full flex items-center justify-center 
-   bg-amazonclone_yellow hover:bg-[#f3a847] duration-300 text-amazonclone_blue cursor-pointer rounder-tr-md rounded-br-md'>
+   bg-amazonclone_yellow hover:bg-[#f3a847] duration-300 text-amazonclone_blue cursor-pointer rounder-tr-md rounded-br-md  '>
     <SearchIcon/></span>
 </div>
 {/*       Search end  here   */}
@@ -70,13 +70,13 @@ showAll && (
 <div  className=' flex-col  justify-center px-2 h-[80%] flex items-start border border-transparent hover:border-white cursor-pointer duration-100  '>
 
 
-  <p className=' text-sm text-ligthText font-light flex flex-col'>Hello , sign in</p>
+  <p className=' text-sm mdl:text-xs text-white mdl:text-ligthText font-light hidden mdl:inline-flex  '>Hello , sign in</p>
   <p>Accounts & Lists <span><ArrowDropDownIcon /></span></p>
 </div>
 {/*       Signin end  here   */}
 {/*        Orders start here    */}
 
-<div className='px-2 h-[80%] flex flex-col items-center border border-transparent hover:border-white cursor-pointer duration-100'>
+<div className='px-2 h-[80%]  hidden lgl:flex  flex-col items-center border border-transparent hover:border-white cursor-pointer duration-100'>
 <p  className='text-sm text-ligthText font-light flex flex-col'>Returns</p>
 <p className='text-sm font-semibold -mt-1 text-white'> & Orders</p>
 
