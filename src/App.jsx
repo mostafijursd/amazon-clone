@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -12,6 +10,8 @@ Outlet,
 Route,
 RouterProvider} from 'react-router-dom'
 import { productsData } from './api/api'
+import Signin from './pages/Signin'
+import Registration from './pages/Registration'
 
 
 
@@ -30,11 +30,15 @@ const Layout=()=>{
 function App() {
   const router=createBrowserRouter(createRoutesFromElements(
     
-
+<Route>
 <Route path='/' element ={<Layout />}>
   <Route index  element={<Home/>}  loader={productsData}></Route>
+  
 </Route>
-    
+<Route path="/signin" element={<Signin/>}></Route>
+<Route path="/registration" element={<Registration/>}></Route>
+
+</Route>
   ))
 
   return (
