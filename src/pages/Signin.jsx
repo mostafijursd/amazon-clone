@@ -1,7 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Link } from 'react-router-dom';
 function Signin() {
+  const[email,setEmail]=useState("");
+  const[password,setPassword]=useState("");
+   const[errEmail,setErrEmail]=useState("");
+   const[errPassword,setErrPassword]=useState("");
+  const handleEmail=(e)=>{
+    setEmail(e.target.value);
+    setErrEmail("");
+  }
+  const handlePassword=(e)=>{
+    setPassword(e.target.value);
+    setErrPassword("");
+  }
+
+const handleLogin=(e)=>{
+  e.preventDefault()
+
+  if(!email){
+    setErrEmail("Enter your email")
+  }
+  if(!password){
+    setErrPassword("Enter your password")
+  }
+  if(email && password){
+    console.log(email,password);
+    setEmail("");
+    setPassword("");
+  }
+}
+
   return (
     <div  className='w-full'>
         <div className='w-full bg-gray-100 pb-10'>
@@ -14,17 +43,33 @@ function Signin() {
 
     <div className='flex flex-col gap-2'>
 <p  className='text-sm font-medium'>Email or mobile phone number</p>
-<input  className='w-full lowercase py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
-focus-within:shadow-amazoncloneInput duration-100' type="email" />
+<input   onChange={handleEmail}
+value={email}
 
+  className='w-full lowercase py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
+focus-within:shadow-amazoncloneInput duration-100' type="email" />
+{
+
+errEmail &&(
+  <p  className='text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5'> <span  className='italic font-titleFont font-extrabold text-base'>!</span>{" "}
+  {errEmail}</p>
+) 
+}
     </div>
     <div className='flex flex-col gap-2'>
 <p  className='text-sm font-medium'>password</p>
-<input  className='w-full lowercase py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
+<input   onChange={handlePassword}
+         value={password} 
+className='w-full lowercase py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
 focus-within:shadow-amazoncloneInput duration-100' type="password" />
+{
 
+errPassword &&(
+  <p  className='text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5'> <span  className='italic font-titleFont font-extrabold text-base'>!</span>{errPassword}</p>
+) 
+}
     </div>
-    <button  onClick={(e)=>e.preventDefault()}  className='w-full py-1.5 text-sm font-normal rounded-sm bg-gradient-to-t from-[#f0be53] hover:bg-gradient-to-b border border-zinc-400
+    <button   onClick={handleLogin}  className='w-full py-1.5 text-sm font-normal rounded-sm bg-gradient-to-t from-[#f0be53] hover:bg-gradient-to-b border border-zinc-400
     active:border-yellow-800 active:shadow-amazoncloneInput'>contiune</button>
   </div>
   <p  className='text-xs text-black leading-4 mt-4'>By Continuing ,you agree to Amazon's <span className='text-blue-600'> Condition of Use{""} </span>and

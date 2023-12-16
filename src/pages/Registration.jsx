@@ -68,8 +68,13 @@ if(!cPassword){
   }
 
 
-if(errClientName && email && emailValidation(email) && password.length>=6 && cPassword && cPassword===password){
-
+if(clientName && email && emailValidation(email) && password.length>=6 && cPassword && cPassword===password){
+console.log(clientName,email,password,cPassword);
+setClientName("")
+setEmail("")
+setPassword("")
+setCPassWord("")
+setErrCPassword("")
 }
 
 }
@@ -84,8 +89,11 @@ if(errClientName && email && emailValidation(email) && password.length>=6 && cPa
     <div className='flex flex-col gap-3'>
         <div  className='flex flex-col gap-2'>
             <p  className='text-sm font-medium'>Your Name</p>
-            <input onChange={handleName} className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
-focus-within:shadow-amazoncloneInput duration-100' type="text" />
+            <input onChange={handleName} 
+                    value={clientName}
+                   type="text"
+            className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
+focus-within:shadow-amazoncloneInput duration-100'  />
 
 {
 
@@ -97,8 +105,11 @@ focus-within:shadow-amazoncloneInput duration-100' type="text" />
         </div>
         <div className='flex flex-col gap-2'>
         <p  className='text-sm font-medium'>Email or mobile number</p>
-            <input onChange={handelEmail} className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
-focus-within:shadow-amazoncloneInput duration-100' type="email" />
+            <input onChange={handelEmail} 
+                   value={email}
+                    type="email"
+            className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
+focus-within:shadow-amazoncloneInput duration-100' />
 
 {
 
@@ -111,8 +122,11 @@ errEmail &&(
         </div>
         <div className='flex flex-col gap-2'>
         <p  className='text-sm font-medium'>Password</p>
-            <input onChange={handlePassword} className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
-focus-within:shadow-amazoncloneInput duration-100' type="password" /> 
+            <input onChange={handlePassword}
+               value={password}
+            type="password"
+             className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
+focus-within:shadow-amazoncloneInput duration-100'  /> 
 
 
 {
@@ -124,8 +138,11 @@ errPassword &&(
         </div>
         <div className='flex flex-col gap-2'>
         <p  className='text-sm font-medium'>Re-enter password</p>
-            <input onChange={handleCpassword} className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
-focus-within:shadow-amazoncloneInput duration-100' type="email" />
+            <input onChange={handleCpassword} 
+                    value={cPassword}
+                    type="password"
+            className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
+focus-within:shadow-amazoncloneInput duration-100' />
 {
 
 errCPassword &&(
