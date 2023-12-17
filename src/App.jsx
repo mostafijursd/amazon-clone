@@ -12,6 +12,7 @@ RouterProvider} from 'react-router-dom'
 import { productsData } from './api/api'
 import Signin from './pages/Signin'
 import Registration from './pages/Registration'
+import Cart from './pages/Cart'
 
 
 
@@ -33,6 +34,7 @@ function App() {
 <Route>
 <Route path='/' element ={<Layout />}>
   <Route index  element={<Home/>}  loader={productsData}></Route>
+  <Route path='/cart' element={<Cart/>}></Route>
   
 </Route>
 <Route path="/signin" element={<Signin/>}></Route>

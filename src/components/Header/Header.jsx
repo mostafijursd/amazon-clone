@@ -6,17 +6,21 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {allitem} from '../constants/index'
 import HeaderBottom from './HeaderBottom';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Header() {
   const [showAll,setShowAll]=useState(false);
+  const products=useSelector((state)=> state.amazonReducer.products)
   
   return (
     <div   className='w-full sticky top-0 z-50 '>
       <div  className=' w-full  bg-amazonclone_green  text-white mx-auto  px-4  py-3  flex  items-center gap-4'>
 {/*       Image start here     */}
+<Link to='/'>
 <div className='px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100'>
   <img className='w-24 mt-2' src="https://imgur.com/RQcAa9T.png"  />
 </div>
+</Link>
 {/*       Image End here     */}
 {/*       Deliver start here   */}
 <div className="px-2 h-[80%] flex items-center border border-transparent hover:border-white cursor-pointer duration-100 mdl:inline-flex">
@@ -88,10 +92,14 @@ showAll && (
 
 {/*    Cart  start here    */}
 
+<Link  to='/cart'>
 <div className='px-2 h-[80%] flex  items-start  justify-center border border-transparent hover:border-white cursor-pointer duration-100  relative'>
 <ShoppingCartIcon/>
-  <p className='text-xs font-semibold mt-3 text-whiteText'>Cart <span  className='absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-amazonclone_yellow rounded-full  flex justify-center items-center'>0</span></p>
+  <p className='text-xs font-semibold mt-3 text-whiteText'>Cart <span  className='absolute text-xs -top-1 left-6 font-semibold p-1 h-4 bg-amazonclone_yellow rounded-full  flex justify-center items-center'>
+    {products.length >0 ? products.length :0}
+    </span></p>
 </div>
+</Link>
 
 {/*     Cart  end here     */}
 
