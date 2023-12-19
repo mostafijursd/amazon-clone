@@ -8,7 +8,8 @@ createBrowserRouter,
 createRoutesFromElements,
 Outlet,
 Route,
-RouterProvider} from 'react-router-dom'
+RouterProvider,
+ScrollRestoration} from 'react-router-dom'
 import { productsData } from './api/api'
 import Signin from './pages/Signin'
 import Registration from './pages/Registration'
@@ -20,6 +21,7 @@ const Layout=()=>{
   return(
     <div>
       <Header/>
+      < ScrollRestoration/>
       <Outlet/>
       <Footer/>
     </div>

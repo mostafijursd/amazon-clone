@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {motion} from 'framer-motion'
 import { useEffect } from 'react';
 import { decrementQuantity, deleteItem, incrementQuantity, resetCart } from '../redux/AmazonSlice';
+import { Link } from 'react-router-dom';
 
 function Cart() {
-    const products=useSelector((state)=> state.amazonReducer.products);
+    const products=useSelector((state)=> state.amazon.products);
     const[totalPrice,setTotalPrice]=useState("")
   const dispatch=useDispatch()
  useEffect(()=>{
@@ -19,7 +21,10 @@ function Cart() {
 
   return (
     <div  className='w-full bg-gray-100 p-4'>
-<div  className='container mx-auto h-auto grid grid-cols-5 gap-8'>
+{
+
+products.length >0 ?(
+    <div  className='container mx-auto h-auto grid grid-cols-5 gap-8'>
 
 <div className='w-full h-full bg-white px-4 col-span-4'>
     <div className='font-titleFont flex items-center justify-between border-b-[1px] border-b-gray-400 py-3'>
@@ -87,6 +92,28 @@ active:from-yellow-400 active:to-yellow-500 duration-200 py-1.5 rounded-md mt-3 
 </div>
 
 </div>
+) : <motion.div initial={{y:70,opacity:0}} 
+                animate={{y:0,opacity:1}} 
+                transition={{delay:0.5, duration:0.5}}
+            
+
+className='flex justify-center items-center gap-4 py-10'>
+   <div>
+    <img  className='w-80 rounded-lg p-4 mx-auto' src="https://imgur.com/xhKNsnF.png" alt=" EmptyCart"  />
+   </div>
+   <div className='w-96 p-4 bg-white flex flex-col items-center rounded-md shadow-lg'>
+    <h1  className='font-titleFont text-xl font-bold'>Your Cart feel lonely</h1>
+    <p  className='text-sm text-center'>{" "} Your cart lives to serve. Give it purpose - fill it with
+    books , electronics, videos,etc. and make it happy </p>
+   <Link  to="/">
+   <button className='mt-6 bg-yellow-400 rounded-md cursor-pointer hover:bg-yellow-500
+    active:bg-yellow-700 px-8 py-2 font-titleFont font-semibold text-lg'>Continue Shopping
+    </button>
+   </Link>
+   </div>
+</motion.div>
+
+}
 
     </div>
   )
