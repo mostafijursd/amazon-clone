@@ -102,7 +102,7 @@ errPassword &&(
  <p className='text-xs text-blue-600 hover:text-orange-600 hover:underline
  underline-offset-1 cursor-pointer duration-100'>Privacy Notice</p>
 </div>
-<p  className='text-xs text-gray-600'> 1996-2024, ReactBd.com or its affiliates</p>
+<p  className='text-xs text-gray-600'>© 1996-2024, ReactBd.com or its affiliates</p>
 </div>
 
     </div>

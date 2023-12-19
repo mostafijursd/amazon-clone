@@ -17,7 +17,17 @@ footerBottomItem.map((item)=>(
 }
 </div>
 </div>
+   <div  className='w-full bg-gradient-to-t text-[#999] flex flex-col gap-2 justify-center items-center py-4' >
+<div  className=' flex justify-end gap-2 '>
+  <p  className='text-xs text-gray-400'>Conditions of Use</p>
+  <p  className='text-xs text-gray-400'>Privacy Notice</p>
+  <p  className='text-xs text-gray-400'>
+Your Ads Privacy Choices</p>
 
+
+</div>
+<p className='text-xs text-gray-400'>© 1996-2024, Amazon.com, Inc. or its affiliates</p>
+   </div>
     </div>
   )
 }
