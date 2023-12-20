@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState={
     products:[],
-    userInfo:[],
+    userInfo:null,
 
 }
   export const amazonSlice=createSlice({
@@ -30,15 +30,36 @@ const initialState={
                 item.quantity--
             }
                     },
+//delete item cart
         deleteItem:(state,action)=>{
             state.products=state.products.filter((item)=>item.id!==action.payload)
+    
         },
+        // rest  cart to inital state 
       resetCart:(state)=>{
         state.products=[]
-      }  
+      },
+      // products Reducers end here
+      // UserInfo Reducers start here
+      // User authentication
+      setUserInfo:(state,action)=>{
+        state.userInfo=action.payload
+      },
+  userSignOut:(state)=>{
+    state.userInfo = null
+  }
+
+
     }
   })
  
 
-  export const{addToCart,deleteItem,resetCart,incrementQuantity,decrementQuantity}=amazonSlice.actions;
+  export const{addToCart,
+    deleteItem,
+    resetCart,
+    incrementQuantity,
+    decrementQuantity,
+    setUserInfo,
+    userSignOut
+  }=amazonSlice.actions;
    export default amazonSlice.reducer;

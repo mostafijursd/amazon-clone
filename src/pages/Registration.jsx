@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner';
+import { motion } from 'framer-motion';
+
 function Registration() {
+  const navigate=useNavigate()
+  const auth = getAuth();
   const [clientName,setClientName]=useState("");
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
@@ -11,6 +17,13 @@ function Registration() {
   const[errEmail,setErrEmail]=useState("");
   const[errPassword,setErrPassword]=useState("");
   const[errCPassword,setErrCPassword]=useState("");
+   const[firebaseErr,setFirbaseErr]=useState("")
+
+
+// loding state start
+const[loding,setLoading]=useState(false);
+const[successMsg,setSuccessMsg]=useState("");
+
 
 // Handle function start
  const handleName=(e)=>{
@@ -30,6 +43,9 @@ const handleCpassword=(e)=>{
   setErrCPassword("")
 }
 
+
+
+
 // Email validation start
  const emailValidation=()=>{
     return String(email).toLowerCase().match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
@@ -48,6 +64,7 @@ if(!clientName){
 }
 if(!email){
   setErrEmail("Enter your email")
+  firebaseErr("")
 }else{
   if(!emailValidation(email)){
     setErrEmail("Enter your valid email")
@@ -68,13 +85,39 @@ if(!cPassword){
   }
 
 
-if(clientName && email && emailValidation(email) && password.length>=6 && cPassword && cPassword===password){
-console.log(clientName,email,password,cPassword);
+if(clientName && email && emailValidation(email) && password.length>=6 && cPassword && cPassword===password)
+{
+setLoading(true)
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    updateProfile(auth.currentUser,{
+      displayName:clientName,
+      photoURL:"https://i.imgur.com/qu8FXCC.png",
+    })
+    // Signed up 
+    const user = userCredential.user;
+    
+    setLoading(false);
+    setSuccessMsg("Account  Created SuccessFully! ");
+    setTimeout(() => {
+      navigate("/signin")
+    }, 3000);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    
+    if(errorCode.includes("auth/email-already-in-use")){
+      setFirbaseErr("Email Already in use ,try another one")
+    }
+    // ..
+  });
 setClientName("")
 setEmail("")
 setPassword("")
 setCPassWord("")
 setErrCPassword("")
+setFirbaseErr("")
 }
 
 }
@@ -83,7 +126,10 @@ setErrCPassword("")
     <div  className='w-full '>
         <div className='w-full bg-gray-100 pb-10 '>
 <form className='w-[350px] mx-auto flex flex-col items-center'>
+
+<Link to="/">
 <img className='w-36' src="https://imgur.com/e5wQXJq.png"  />
+</Link>
 <div className='w-full border border-zinc-200 p-6'>
     <h2  className='font-titleFont text-3xl font-medium mb-4'>Create Account</h2>
     <div className='flex flex-col gap-3'>
@@ -111,13 +157,19 @@ focus-within:shadow-amazoncloneInput duration-100'  />
             className='w-full  py-1 boder border-zinc-400 px-2 text-base rounded-sm outline-none focus-within:border-[#e77600] 
 focus-within:shadow-amazoncloneInput duration-100' />
 
-{
-
-errEmail &&(
-  <p  className='text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5'> <span  className='italic font-titleFont font-extrabold text-base'>!</span>{" "}
+{  errEmail &&(
+  <p  className='text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5'> 
+  <span  className='italic font-titleFont font-extrabold text-base'>!</span>{" "}
   {errEmail}</p>
 ) 
 }
+{  firebaseErr &&(
+  <p  className='text-red-600 text-xs font-semibold tracking-wide flex items-center gap-2 -mt-1.5'> 
+  <span  className='italic font-titleFont font-extrabold text-base'>!</span>{" "}
+  {firebaseErr}</p>
+) 
+}
+
 
         </div>
         <div className='flex flex-col gap-2'>
@@ -153,7 +205,35 @@ errCPassword &&(
 <p className='text-xs text-gray-600'>Password must be at least 6 characters</p> 
         </div>
         <button  onClick={handleRegistration} className='w-full py-1.5 text-sm font-normal rounded-sm bg-gradient-to-t from-[#f0be53] hover:bg-gradient-to-b border border-zinc-400
-    active:border-yellow-800 active:shadow-amazoncloneInput'>contiune</button>
+    active:border-yellow-800 active:shadow-amazoncloneInput'>contiune
+    </button>
+    {
+    loding && (
+    
+      <div  className='flex justify-center'>
+      
+      <RotatingLines
+  strokeColor="#febd69"
+  strokeWidth="5"
+  animationDuration="0.75"
+  width="50"
+  visible={true}
+/>
+      </div>
+    )
+    
+    }
+
+    {
+    successMsg && (
+      <div>
+      <motion.p initial={{y:10,opacity:0}} 
+                animate={{y:0,opacity:1}} 
+                transition={{ duration:0.5}}
+           className='text-base font-titleFont font-semibold text-green-500 border-[1px]'  >{successMsg}</motion.p>
+      </div>
+    )
+    }
     </div>
     <p  className='text-xs text-black leading-4 mt-4'>By Continuing ,you agree to Amazon's <span className='text-blue-600'> Condition of Use{""} </span>and
    <span className='text-blue-600'> Privace Notice </span></p>

@@ -1,17 +1,46 @@
 import React, { useState } from 'react'
+import { getAuth, signOut } from "firebase/auth";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import LogoutIcon from '@mui/icons-material/Logout';
 import {allitem} from '../constants/index'
 import HeaderBottom from './HeaderBottom';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useRef } from 'react';
+import { userSignOut } from '../../redux/AmazonSlice';
 
 function Header() {
+  const auth = getAuth();
+  const ref=useRef();
+  const dispatch=useDispatch();
   const [showAll,setShowAll]=useState(false);
-  const products=useSelector((state)=> state.amazon.products)
+  const products=useSelector((state)=> state.amazon.products);
+  const userInfo=useSelector((state)=>state.amazon.userInfo);
   
+useEffect(()=>{
+  document.body.addEventListener("click",(e)=>{
+    if(e.target.contains(ref.current)){
+showAll && setShowAll(false)
+    }
+  });
+},[ref,showAll])
+
+const handleLogout=()=>{
+  signOut(auth).then(() => {
+    console.log("sigout successfull");
+    dispatch(userSignOut())
+    // Sign-out successful.
+  }).catch((error) => {
+    console.log(error);
+    // An error happened.
+  });
+  
+}
+
   return (
     <div   className='w-full sticky top-0 z-50 '>
       <div  className=' w-full  bg-amazonclone_green  text-white mx-auto  px-4  py-3  flex  items-center gap-4'>
@@ -64,7 +93,7 @@ showAll && (
 }
 
 
-  <input  className=' h-full text-base text-amazonclone_blue flex-grow outline-none border-none px-2' type="text" placeholder='Serach Amazon.in' />
+  <input  className=' h-full text-base text-amazonclone_blue flex-grow outline-none border-none px-2' type="text"  />
   <span className='w-12 h-full flex items-center justify-center 
    bg-amazonclone_yellow hover:bg-[#f3a847] duration-300 text-amazonclone_blue cursor-pointer rounder-tr-md rounded-br-md  '>
     <SearchIcon/></span>
@@ -72,10 +101,14 @@ showAll && (
 {/*       Search end  here   */}
 {/*       Signin start  here    */}
 
-<Link to="/signin"><div  className=' flex-col  justify-center px-2 h-[80%] flex items-start border border-transparent hover:border-white cursor-pointer duration-100  '>
+<Link to="/signin">
+  <div  className=' flex-col  justify-center px-2 h-[80%] flex items-start border border-transparent hover:border-white cursor-pointer duration-100  '>
 
+{
+userInfo ? ( <p className=' text-sm text-gray-100 font-medium  '>{userInfo.userName}</p>):(<p className=' text-sm mdl:text-xs text-white mdl:text-ligthText 
+font-light hidden mdl:inline-flex  '>Hello , sign in</p>)
+}
 
-<p className=' text-sm mdl:text-xs text-white mdl:text-ligthText font-light hidden mdl:inline-flex  '>Hello , sign in</p>
 <p>Accounts & Lists <span><ArrowDropDownIcon /></span></p>
 </div>
 </Link>
@@ -100,6 +133,16 @@ showAll && (
     </span></p>
 </div>
 </Link>
+{userInfo && (
+  <div  onClick={handleLogout} className='flex flex-col justify-center   px-2 h-[80%]  items-center border border-transparent hover:border-white cursor-pointer duration-100 relative'>
+  <LogoutIcon/>
+    <p  className='hidden mdl:inline-flex text-xs font-semibold text-white'>Log out</p>
+  </div>
+  
+)
+
+
+}
 
 {/*     Cart  end here     */}
 
