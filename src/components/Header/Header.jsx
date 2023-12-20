@@ -31,11 +31,11 @@ showAll && setShowAll(false)
 
 const handleLogout=()=>{
   signOut(auth).then(() => {
-    console.log("sigout successfull");
+    
     dispatch(userSignOut())
     // Sign-out successful.
   }).catch((error) => {
-    console.log(error);
+    
     // An error happened.
   });
   
