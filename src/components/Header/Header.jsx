@@ -27,7 +27,7 @@ useEffect(()=>{
 showAll && setShowAll(false)
     }
   });
-},[ref,showAll])
+},[ref,showAll]);
 
 const handleLogout=()=>{
   signOut(auth).then(() => {
@@ -60,10 +60,10 @@ const handleLogout=()=>{
 {/*       Deliver end here   */}
 {/*       Search start here   */} 
 
-<div className='h-9 rounded-md hidden lgl:flex flex-grow  relative border-2'>
+<div className='h-10 rounded-md hidden lgl:flex flex-grow  relative border-2'>
 
   <span  onClick={()=>setShowAll(!showAll)}  className='w-12 h-full  bg-gray-200 hover:bg-gray-200  border-2 cursor-pointer 
-  duration-300 text-sm  text-amazonclone_blue  font-titleFont  flex items-center justify-center rounder-tl-md rounded-bl-md'>All <span><ArrowDropDownIcon /></span>
+  duration-300 text-sm  text-amazonclone_blue  font-titleFont  flex items-center justify-center rounded-tl-md rounded-bl-md'>All <span><ArrowDropDownIcon /></span>
   </span>
 
 
