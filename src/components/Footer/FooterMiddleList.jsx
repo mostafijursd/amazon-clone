@@ -15,6 +15,6 @@ function FooterMiddleList( {title,listItem}) {
 </div>
 
   )
-}
+};
 
-export default FooterMiddleList
+export default FooterMiddleList;

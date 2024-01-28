@@ -51,7 +51,7 @@ const initialState={
 
 
     }
-  })
+  });
  
 
   export const{addToCart,

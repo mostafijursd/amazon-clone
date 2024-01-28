@@ -8,15 +8,15 @@ import { Link } from 'react-router-dom';
 
 function Cart() {
     const products=useSelector((state)=> state.amazon.products);
-    const[totalPrice,setTotalPrice]=useState("")
-  const dispatch=useDispatch()
+    const[totalPrice,setTotalPrice]=useState("");
+  const dispatch=useDispatch();
  useEffect(()=>{
     let Total=0;
     products.map((item)=>{
         Total +=item.price *item.quantity;
-        return setTotalPrice(Total.toFixed(2))
+        return setTotalPrice(Total.toFixed(2));
     },[products])
- })
+ });
 
 
   return (
@@ -117,6 +117,6 @@ className='flex justify-center items-center gap-4 py-10'>
 
     </div>
   )
-}
+};
 
-export default Cart
+export default Cart;

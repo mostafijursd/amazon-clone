@@ -30,6 +30,6 @@ Your Ads Privacy Choices</p>
    </div>
     </div>
   )
-}
+};
 
-export default FooterBottom
+export default FooterBottom;

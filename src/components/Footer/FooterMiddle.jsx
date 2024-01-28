@@ -50,6 +50,6 @@ function FooterMiddle() {
 
     </div>
   )
-}
+};
 
-export default FooterMiddle
+export default FooterMiddle;

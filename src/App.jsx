@@ -1,19 +1,19 @@
 
-import './App.css'
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
-import Home from './pages/Home'
+import './App.css';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Home from './pages/Home';
 import{ 
 createBrowserRouter,
 createRoutesFromElements,
 Outlet,
 Route,
 RouterProvider,
-ScrollRestoration} from 'react-router-dom'
-import { productsData } from './api/api'
-import Signin from './pages/Signin'
-import Registration from './pages/Registration'
-import Cart from './pages/Cart'
+ScrollRestoration} from 'react-router-dom';
+import { productsData } from './api/api';
+import Signin from './pages/Signin';
+import Registration from './pages/Registration';
+import Cart from './pages/Cart';
 
 
 
@@ -51,6 +51,6 @@ function App() {
    
    </div>
   )
-}
+};
 
-export default App
+export default App;

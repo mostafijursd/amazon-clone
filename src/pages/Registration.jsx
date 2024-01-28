@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword,updateProfile } from "firebase/auth";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { motion } from 'framer-motion';
 
 function Registration() {
-  const navigate=useNavigate()
+  const navigate=useNavigate();
   const auth = getAuth();
   const [clientName,setClientName]=useState("");
   const[email,setEmail]=useState("");
@@ -17,7 +17,7 @@ function Registration() {
   const[errEmail,setErrEmail]=useState("");
   const[errPassword,setErrPassword]=useState("");
   const[errCPassword,setErrCPassword]=useState("");
-   const[firebaseErr,setFirbaseErr]=useState("")
+   const[firebaseErr,setFirbaseErr]=useState("");
 
 
 // loding state start
@@ -28,20 +28,20 @@ const[successMsg,setSuccessMsg]=useState("");
 // Handle function start
  const handleName=(e)=>{
   setClientName(e.target.value);
-  setErrClientName("")
- }
+  setErrClientName("");
+ };
  const handelEmail=(e)=>{
 setEmail(e.target.value);
-setErrEmail("")
- }
+setErrEmail("");
+ };
 const handlePassword=(e)=>{
 setPassword(e.target.value);
-setErrPassword("")
-}
+setErrPassword("");
+};
 const handleCpassword=(e)=>{
   setCPassWord(e.target.value);
-  setErrCPassword("")
-}
+  setErrCPassword("");
+};
 
 
 
@@ -49,7 +49,7 @@ const handleCpassword=(e)=>{
 // Email validation start
  const emailValidation=()=>{
     return String(email).toLowerCase().match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
- }
+ };
 
 
 
@@ -93,7 +93,7 @@ createUserWithEmailAndPassword(auth, email, password)
     updateProfile(auth.currentUser,{
       displayName:clientName,
       photoURL:"https://i.imgur.com/qu8FXCC.png",
-    })
+    });
     // Signed up 
     const user = userCredential.user;
     
@@ -112,12 +112,12 @@ createUserWithEmailAndPassword(auth, email, password)
     }
     // ..
   });
-setClientName("")
-setEmail("")
-setPassword("")
-setCPassWord("")
-setErrCPassword("")
-setFirbaseErr("")
+setClientName("");
+setEmail("");
+setPassword("");
+setCPassWord("");
+setErrCPassword("");
+setFirbaseErr("");
 }
 
 }
@@ -213,7 +213,7 @@ errCPassword &&(
       <div  className='flex justify-center'>
       
       <RotatingLines
-  strokeColor="#febd69"
+  strokeColor="#febd69" 
   strokeWidth="5"
   animationDuration="0.75"
   width="50"
@@ -266,6 +266,6 @@ errCPassword &&(
 </div>
     </div>
   )
-}
+};
 
-export default Registration
+export default Registration;

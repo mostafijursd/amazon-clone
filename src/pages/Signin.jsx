@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-import  {RotatingLines } from 'react-loader-spinner'
+import  {RotatingLines } from 'react-loader-spinner';
 import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setUserInfo } from '../redux/AmazonSlice';
 function Signin() {
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
   const auth = getAuth();
-  const navigate=useNavigate()
+  const navigate=useNavigate();
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
    const[errEmail,setErrEmail]=useState("");
@@ -189,6 +189,6 @@ const handleLogin=(e)=>{
 
     </div>
   )
-}
+};
 
-export default Signin
+export default Signin ;

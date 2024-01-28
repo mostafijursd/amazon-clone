@@ -8,7 +8,7 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/AmazonSlice";
 function Products() {
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
 const data=useLoaderData();
   const  productsData = data.data;
   
@@ -76,6 +76,6 @@ productsData.map((item)=>(
 
     </div>
   )
-}
+};
 
-export default Products
+export default Products;

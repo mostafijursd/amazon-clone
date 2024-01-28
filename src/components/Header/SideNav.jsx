@@ -14,6 +14,6 @@ function SideNav({title,one ,two ,three}) {
     </ul>
 </div>
   )
-}
+};
 
-export default SideNav
+export default SideNav;

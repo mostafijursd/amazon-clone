@@ -7,15 +7,15 @@ import{motion} from 'framer-motion'
 import { useSelector } from 'react-redux';
 function HeaderBottom() {
     const ref=useRef();
-    const userInfo=useSelector((state)=>state.amazon.userInfo)
-    const[sidebar,setSidebar]=useState(false)
+    const userInfo=useSelector((state)=>state.amazon.userInfo);
+    const[sidebar,setSidebar]=useState(false);
     useEffect(()=>{
 document.body.addEventListener("click",(e)=>{
     if(e.target.contains(ref.current))
     {
         setSidebar(false)
     }
-})
+});
     },[ref,setSidebar])
   return (
     <div  className='w-full px-4 h-[36px] bg-amazonclone_greenLigth text-white  '>
@@ -72,6 +72,6 @@ document.body.addEventListener("click",(e)=>{
 
     </div>
   )
-}
+};
 
-export default HeaderBottom
+export default HeaderBottom;

@@ -1,6 +1,6 @@
-import React from 'react'
-import Banner from '../components/Home/Banner'
-import Products from '../components/Home/Products'
+import React from 'react';
+import Banner from '../components/Home/Banner';
+import Products from '../components/Home/Products';
 function Home() {
   return (
     <div>
@@ -11,6 +11,6 @@ function Home() {
        
     </div>
   )
-}
+};
 
-export default Home
+export default Home;

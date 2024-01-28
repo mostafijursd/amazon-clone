@@ -151,6 +151,6 @@ font-light hidden mdl:inline-flex  '>Hello , sign in</p>)
 <HeaderBottom/>
     </div>
   )
-}
+};
 
-export default Header
+export default Header;
